@@ -774,7 +774,7 @@ class redemption {
                 cout << setw(20) << left << "Zhan zhixiang" << setw(10) << right << "23081406A" << setw(12) << right << "B04\n"; // Print each row of the table
                 cout << setw(20) << left << "HUANG Kaicong" << setw(10) << right << "21059188A" << setw(12) << right << "B04\n";
                 cout << setw(20) << left << "LO Ho Nam" << setw(10) << right << "23004216A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "LAI Tsz Fung" << setw(10) << right << "23032020A" << setw(12) << right << "B04\n";
+                cout << setw(20) << left << "Yip Chin Tung" << setw(10) << right << "22063753A" << setw(12) << right << "B04\n";
                 cout << setw(20) << left << "TONG Wai Fan" << setw(10) << right << "23172840A" << setw(12) << right << "B04\n";
                 cout << setw(20) << left << "Wong Tsz Tung" << setw(10) << right << "22002723A" << setw(12) << right << "B04\n";
                 valid = true;  // Set valid to true to exit the loop
