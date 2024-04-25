@@ -18,19 +18,19 @@ class redemption {
           // Gift IDs
           strcpy_s(giftid[0], sizeof(giftid[0]), "A01");
           strcpy_s(giftid[1], sizeof(giftid[1]), "A02");
-          strcpy_s(giftid[2], sizeof(giftid[1]), "A03");
-          strcpy_s(giftid[3], sizeof(giftid[2]), "B01");
-          strcpy_s(giftid[4], sizeof(giftid[3]), "B02");
-          strcpy_s(giftid[5], sizeof(giftid[4]), "B03");
-          strcpy_s(giftid[6], sizeof(giftid[5]), "B04");
-          strcpy_s(giftid[7], sizeof(giftid[6]), "B05");
-          strcpy_s(giftid[8], sizeof(giftid[7]), "C01");
-          strcpy_s(giftid[9], sizeof(giftid[8]), "C02");
-          strcpy_s(giftid[10], sizeof(giftid[9]), "C03");
-          strcpy_s(giftid[11], sizeof(giftid[10]), "C04");
-          strcpy_s(giftid[12], sizeof(giftid[11]), "D01");
-          strcpy_s(giftid[13], sizeof(giftid[12]), "D02");
-          strcpy_s(giftid[14], sizeof(giftid[13]), "D03");
+          strcpy_s(giftid[2], sizeof(giftid[2]), "A03");
+          strcpy_s(giftid[3], sizeof(giftid[3]), "B01");
+          strcpy_s(giftid[4], sizeof(giftid[4]), "B02");
+          strcpy_s(giftid[5], sizeof(giftid[5]), "B03");
+          strcpy_s(giftid[6], sizeof(giftid[6]), "B04");
+          strcpy_s(giftid[7], sizeof(giftid[7]), "B05");
+          strcpy_s(giftid[8], sizeof(giftid[8]), "C01");
+          strcpy_s(giftid[9], sizeof(giftid[9]), "C02");
+          strcpy_s(giftid[10], sizeof(giftid[10]), "C03");
+          strcpy_s(giftid[11], sizeof(giftid[11]), "C04");
+          strcpy_s(giftid[12], sizeof(giftid[12]), "D01");
+          strcpy_s(giftid[13], sizeof(giftid[13]), "D02");
+          strcpy_s(giftid[14], sizeof(giftid[14]), "D03");
 
           // Descriptions
           strcpy_s(des[0], sizeof(des[0]), "LG Internet TV");
