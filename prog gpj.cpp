@@ -18,19 +18,19 @@ class redemption {
           // Gift IDs
           strcpy_s(giftid[0], sizeof(giftid[0]), "A01");
           strcpy_s(giftid[1], sizeof(giftid[1]), "A02");
-          strcpy_s(giftid[2], sizeof(giftid[2]), "A03");
-          strcpy_s(giftid[3], sizeof(giftid[3]), "B01");
-          strcpy_s(giftid[4], sizeof(giftid[4]), "B02");
-          strcpy_s(giftid[5], sizeof(giftid[5]), "B03");
-          strcpy_s(giftid[6], sizeof(giftid[6]), "B04");
-          strcpy_s(giftid[7], sizeof(giftid[7]), "B05");
-          strcpy_s(giftid[8], sizeof(giftid[8]), "C01");
-          strcpy_s(giftid[9], sizeof(giftid[9]), "C02");
-          strcpy_s(giftid[10], sizeof(giftid[10]), "C03");
-          strcpy_s(giftid[11], sizeof(giftid[11]), "C04");
-          strcpy_s(giftid[12], sizeof(giftid[12]), "D01");
-          strcpy_s(giftid[13], sizeof(giftid[13]), "D02");
-          strcpy_s(giftid[14], sizeof(giftid[14]), "D03");
+          strcpy_s(giftid[2], sizeof(giftid[1]), "A03");
+          strcpy_s(giftid[3], sizeof(giftid[2]), "B01");
+          strcpy_s(giftid[4], sizeof(giftid[3]), "B02");
+          strcpy_s(giftid[5], sizeof(giftid[4]), "B03");
+          strcpy_s(giftid[6], sizeof(giftid[5]), "B04");
+          strcpy_s(giftid[7], sizeof(giftid[6]), "B05");
+          strcpy_s(giftid[8], sizeof(giftid[7]), "C01");
+          strcpy_s(giftid[9], sizeof(giftid[8]), "C02");
+          strcpy_s(giftid[10], sizeof(giftid[9]), "C03");
+          strcpy_s(giftid[11], sizeof(giftid[10]), "C04");
+          strcpy_s(giftid[12], sizeof(giftid[11]), "D01");
+          strcpy_s(giftid[13], sizeof(giftid[12]), "D02");
+          strcpy_s(giftid[14], sizeof(giftid[13]), "D03");
 
           // Descriptions
           strcpy_s(des[0], sizeof(des[0]), "LG Internet TV");
@@ -632,166 +632,105 @@ class redemption {
         Menu();
     }
 
-    void history() // R5:Show Transaction History 
-    {
+    void history() {
         cout << endl;
-        cout << "Please input your Customer ID: ";
+        cout << "please input your CustomerID:";
         char user[51];
         cin >> user;
         int same = 0;
         int len = strlen(user);
         cout << endl;
-
-        // Find the customer ID in the system
-        for (int i = 0; i < a; i++)
+        for (int i = 1; i <= 3; i++)
         {
-            for (int j = 0; j < len; j++)
+            for (int i = 0; i < a; i++)
             {
-                if (user[j] == customer_ID[i][j])
-                {
-                    same++;
+                for (int j = 0; j < len; j++) {
+                    if (user[j] == customer_ID[i][j]) {
+                        same++;
+                    }
                 }
+                if (same == len)
+                {
+                    pos_h = i;
+                    break;
+                }
+                else { same = 0; }
             }
-            if (same == len)
-            {
-                pos_h = i;
+            if (same == 0) {
+                cout << "Error, please input again!";
+                if (i == 3) { Menu(); }
+            }
+            else {
                 break;
             }
-            else
-            {
-                same = 0;
-            }
         }
 
-        if (same == 0)
-        {
-            cout << "Error: Customer ID not found!" << endl;
-            Menu();
-            return;
-        }
-
-        cout << "CC Points Transaction Records History:\n";
-        cout << "--------------------------------------\n";//visual separator
-        cout << "Earn CC Points:\n";
+        cout << "Earn CC points:\n";
         cout << "Spent" << "\t" << "Original" << "\t" << "Final\n";
-
-        // Check if any earn CC points transactions recorded
-        if (His_E_S[pos_h][0][0] == 0)
-        {
-            cout << "No transaction records found.\n\n";
+        if (His_E_S[pos_h][0][0] == 0) {
+            cout << "Don't have any operation yet\n";
         }
-        else
-        {
-            int originalBalance = initial_CC_points[pos_h];
-            int finalBalance = initial_CC_points[pos_h];
-            int extraMoneyTotal = 0;
-
-            // Display the earn CC points transactions
-            for (int i = 1; i <= His_E_S[pos_h][0][0]; i++)
-            {
-                cout << His_E_S[pos_h][0][i] << "\t";
-                cout << His_E_O[pos_h][0][i] << "\t";
-                cout << His_E_M[pos_h][0][i] << endl;
-
-                // Update the final balance
-                finalBalance += His_E_M[pos_h][0][i];
-                if (His_E_S[pos_h][0][i] < 0)
-                {
-                    extraMoneyTotal += abs(His_E_S[pos_h][0][i]);
-                }
+        for (int i = 1; i <= His_E_S[pos_h][0][0]; i++) {
+            cout << His_E_S[pos_h][0][i] << "\t";
+            cout << His_E_O[pos_h][0][i] << "\t";
+            cout << His_E_M[pos_h][0][i] << endl;
+        }
+       
+        cout << "Redeem gift:\n";
+        cout << "Gift ID" << "\t" << "Discription" << "\t" << "Original" << "\t" << "Final" << "\t"<<"Extra money\n";
+        if (His_Rem_O[pos_h][0][0] == 0) {
+            cout << "Don't have any operation yet\n";
+        }
+        for (int i = 1; i <= His_Rem_O[pos_h][0][0]; i++) {
+            for (int j = 0; i <=2; i++) {
+                cout <<giftid[ His_Rem[pos_h][0][i]][j] << "\t";
             }
-
-            int balanceChange = finalBalance - originalBalance;
-
-            // Display the summary information
-            cout << "\nSummary:\n";
-            cout << "Original CC Points Balance: " << originalBalance << endl;
-            cout << "Final CC Points Balance: " << finalBalance << endl;
-            cout << "Change in CC Points Balance: " << balanceChange << endl;
-            cout << "Total Extra Money to Pay: " << extraMoneyTotal << endl;
-            cout << "--------------------------------------\n\n"; //visual separator
-        }
-
-        cout << "Redeem Gifts:\n";
-        cout << "Gift ID" << "\t" << "Description" << "\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
-
-        // Check if any redeem gifts transactions recorded
-        if (His_Rem_O[pos_h][0][0] == 0)
-        {
-            cout << "No redemption records found.\n\n";
-        }
-        else
-        {
-            // Display the redeem gifts transactions
-            for (int i = 1; i <= His_Rem_O[pos_h][0][0]; i++)
-            {
-                int giftID = His_Rem[pos_h][0][i];
-                cout << giftID << "\t";
-                cout << des[giftID] << "\t";
-                cout << His_Rem_O[pos_h][0][i] << "\t";
-                cout << His_Rem_F[pos_h][0][i] << "\t";
-                cout << His_Rem_E[pos_h][0][i] << endl;
+            for (int j = 1; i <= 30; i++) {
+                cout << des[His_Rem[pos_h][0][i]] [j]<< "\t";
             }
-            cout << "--------------------------------------\n\n"; //visual separator
+            cout << His_Rem_O[pos_h][0][i] << "\t";
+            cout << His_Rem_F[pos_h][0][i] << "\t";
+            cout << His_Rem_E[pos_h][0][i] << endl;
         }
-
-        cout << "Modify CC Points Balance:\n";
+            cout << "Modify:" << "( 1 is increase , -1 is decrease and 0 is same )\n";
         cout << "Type" << "\t" << "Original" << "\t" << "Final\n";
-
-        // Check if any modify CC points balance transactions recorded
-        if (His_Mo_T[pos_h][0][0] == 0)
-        {
-            cout << "No modification records found.\n";
+        if (His_Mo_T[pos_h][0][0] == 0) {
+            cout << "Don't have any operation yet\n";
         }
-        else
-        {
-            // Display the modify CC points balance transactions
-            for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++)
-            {
-                cout << His_Mo_T[pos_h][0][i] << "\t";
-                cout << His_Mo_O[pos_h][0][i] << "\t";
-                cout << His_Mo_F[pos_h][0][i] << endl;
-            }
+        for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++) {
+            cout << His_Mo_T[pos_h][0][i] << "\t";
+            cout << His_Mo_O[pos_h][0][i] << "\t";
+            cout << His_Mo_F[pos_h][0][i] << endl;
         }
-
-        cout << "--------------------------------------\n\n"; //visual separator
-        Menu(); //back to the Menu
+        
+        Menu();
     }
 
-    void edit() // R6:Credits and Exit 
-    {
+    void edit() {
         char u;
         bool valid = false;
 
-        do
-        {
-            cout << "Please enter 'Y' or 'N': "; // Prompt the user for confirmation
+        do {
+            cout << "Please enter 'Y' or 'N': ";
             cin >> u;
 
-            if (u == 'Y' || u == 'y') // Allow user input 'Y' or 'y'
-            {
-                cout << setw(20) << left << "Student Name" << setw(10) << right << "StudentID" << setw(12) << right << "Tutorial Group\n"; // Print table headers
-                cout << setw(20) << left << "Zhan zhixiang" << setw(10) << right << "23081406A" << setw(12) << right << "B04\n"; // Print each row of the table
-                cout << setw(20) << left << "HUANG Kaicong" << setw(10) << right << "21059188A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "LO Ho Nam" << setw(10) << right << "23004216A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "Yip Chin Tung" << setw(10) << right << "22063753A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "TONG Wai Fan" << setw(10) << right << "23172840A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "Wong Tsz Tung" << setw(10) << right << "22002723A" << setw(12) << right << "B04\n";
-                valid = true;  // Set valid to true to exit the loop
+            if (u == 'Y') {
+                cout << "we come from G14\n";
+                cout << "name" << "\t" << "Id\n";
+                cout << "Zhan zhixiang" << "\t" << "23081406A";
             }
-            else if (u == 'N' || u == 'n') // Call the Menu() function to return to the main menu
-            {
-                valid = true;  // Set valid to true to exit the loop
+            if (u == 'N') {
+                Menu();
             }
-            else // Handle invalid input
-            {
+            else {
                 cout << "Invalid input. Please try again." << endl;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.clear();
             }
-        } while (!valid); // Continue looping until a valid input is provided
-    }
+        } while (!valid);
 
+
+    }
     void Menu() {
     cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents！\nThe detailed information is as fellow. Notice:You should initialize the starting data first. \n";
     cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n [5] Show Transaction History \n [6] Credits and Exit \n* *************** \nOption(1 - 6) :";
