@@ -225,7 +225,7 @@ public:
                 cout << "To add your account, please input the date that the you became a member(in the format DD / MM / YYYY)\n";
                 //check whether day,month,year fit to the range
                 do {
-                    cout << "DD\n";
+                    cout << "Plase enter your joinning day(DD): ";
                     cin >> k;
                     if (!cin.fail() && k > 0 && k <= 30) {
                         break;
@@ -237,7 +237,7 @@ public:
                     }
                 } while (1);
                 do {
-                    cout << "MM";
+                    cout << "Please enter your joinning month(MM):";
                     cin >> b;
                     if (!cin.fail() && b > 0 && b <= 12) {
                         break;
@@ -249,7 +249,7 @@ public:
                     }
                 } while (1);
                 do {
-                    cout << "YYYY";
+                    cout << "Plase enter your joinning year(YYYY): ";
                     cin >> c;
                     if (!cin.fail() && c > 1970 && c <= 2024) {
                         break;
@@ -341,7 +341,7 @@ public:
                 break;
             }
         }
-        cout << "successful login!\n";
+        cout << "Successful login! How can we help you today?\n";
     }
     void custome_view()
     {//R4
