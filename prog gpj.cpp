@@ -865,13 +865,13 @@ int main()
     redemption sys;
     sys.setsize(150, 150);
     cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents . The detailed information is as fellow. Notice:You should initialize the starting data first. \n";
-    cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n[5] Show Transaction History \n[6] Credits and Exit \n* *************** \nOption(1 - 6) :";
+    cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n[5] Show Transaction History \n[6] Credits and Exit \n***************** \nOption(1 - 6) :";
     int c;//showMainMenu();
     cin >> c;
     while (true) {
         if (c == 1)break;
         else {
-            cout << "Erro! Please load the starting data first!";
+            cout << "Error! Please load the starting data first!";
             cin >> c;
         }
     }//check untill user cin 1 to load the data
