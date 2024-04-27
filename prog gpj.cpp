@@ -1,20 +1,18 @@
-// ConsoleApplication5.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// ConsoleApplication7.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-
-
-
-
-#include <iostream>
+#include<iostream>
 #include <iomanip>
 #include<cstring>
 #include<stdio.h>
 #include<cmath>
 #include<ctime>
 using namespace std;
-class redemption {
+class redemption
+{
 public:
 
-    void load(){
+    void load()
+    {
         // Load the starting data
 
         // Gift IDs
@@ -118,7 +116,8 @@ public:
         Menu();
     }
 
-    void displayData() {
+    void displayData()
+    {
         // Display the loaded data using setw to format the output
         for (int i = 0; i < 15; i++) {
             cout << setw(5) << giftid[i];
@@ -167,6 +166,10 @@ public:
 
         }
         //show data in alphabet order.
+        cout << "customer_name";
+        cout << "  " << "\t";
+        cout << " Rank" << "\t" << "CC";
+        cout << endl;
         for (int j = 0; j <= a - 1; j++) {
             cout << customer_ID[d[j]];
             cout << "  " << "\t";
@@ -174,9 +177,15 @@ public:
             cout << endl;
         }
         cout << endl;
+        cout << "giftid" << "\t";
+        cout << "description";
+        for (int i = 1; i <= 30; i++) { cout << " "; }
+        cout << "\t" << " price" << "\t" << " require";
+        cout << endl;
         for (int j = 0; j < 15; j++) {
             cout << giftid[j] << "\t";
             cout << des[j];
+            for (int i = 1; i <= 40 - strlen(des[j]); i++) { cout << " "; }
             cout << "\t" << price[j] << "\t" << require[j];
             cout << endl;
         }
@@ -253,10 +262,10 @@ public:
                 } while (1);
                 //((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) is time pass from 1970/1/1.
                 //time(0) is current time pass from 1970/1/1
-                if (time(0)-((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) >= 365 * 24 * 60 * 60) {
+                if (time(0) - ((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) >= 365 * 24 * 60 * 60) {
                     Rank[a - 1] = 'G';
                 }
-                if (time(0)-((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60 ) < 365 * 24 * 60 * 60 && ((a - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60 - time(0)) >= 6 * 30 * 24 * 60 * 60) {
+                if (time(0) - ((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) < 365 * 24 * 60 * 60 && ((a - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60 - time(0)) >= 6 * 30 * 24 * 60 * 60) {
                     Rank[a - 1] = 'S';
                 }
                 else {
@@ -275,16 +284,16 @@ public:
             }
             if (check == 'n') { Menu(); }
         }
-            else 
+        else
         {
             cout << "would you want to delect this new account from system? 'y'or'n'";
             char check2;
             cin >> check2;
-            if (check2 == 'y') 
+            if (check2 == 'y')
             {
                 cout << "successful delect!\n";
                 a = a - 1;
-                //delect position customer with‘ ’and swap the last customer to the position.
+                //delect position customer with閳?閳ユ獌nd swap the last customer to the position.
                 for (int i = 0; i <= 30; i++) {
                     customer_ID[pos][i] = ' ';
                     customer_ID[pos][i] = customer_ID[a][i];
@@ -297,8 +306,8 @@ public:
                 Menu();
             }
             if (check2 == 'n') { Menu(); }
-            }
-       
+        }
+
     }
     void custome_log() {//this function is to check whether the input customerID is correct
         cout << "please input your CustomerID:";
@@ -334,7 +343,8 @@ public:
         }
         cout << "successful login!\n";
     }
-    void custome_view() {//R4
+    void custome_view()
+    {//R4
         cout << endl;
 
         cout << "Action for Customer ID: " << customerName << "\n";
@@ -368,7 +378,7 @@ public:
         CC[pos] = CC[pos] + (a - b % 250) / 250;
         His_E_M[pos][0][0] = His_E_M[pos][0][0] + 1;
         His_E_M[pos][0][His_E_M[pos][0][0]] = (a - b % 250) / 250;//count into CCpoints notice:int b = floor(a)
-        cout << "Your CCpoints wallet is richer!";
+        cout << "Your CCpoints wallet is richer";
         cout << endl;
         custome_view();
 
@@ -385,7 +395,8 @@ public:
         else {
             b = 1;
         }
-        cout << "choose a category of your gift.(A/B/C/D):";
+        cout << "choose a category of your gift.(A/B/C/D):\n";
+        cout << "giftid" << "\t" << "description" << "\t" << "price" << "\t" << "require" << "\t" << "need extra money?" << endl;
         char f;
         int a[15] = { 0 };
         int d[15] = { 0 };
@@ -393,7 +404,7 @@ public:
         int site;
 
         cin >> f;
-        switch (f)//choose a category of your gift.(A/B/C/D):
+        switch (f)
         {
         case 'A':
 
@@ -414,7 +425,7 @@ public:
 
             for (int j = 0; j < 3; j++) {
                 cout << giftid[d[j]] << "\t";
-                for (int i = 0; i < 80; i++) {
+                for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
                 if (require[d[j]] * b > CC[pos]) {
@@ -423,7 +434,7 @@ public:
                 cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << extra;
                 cout << endl;
             }
-            cout << endl;//show A category
+            cout << endl;
             choose();
             cout << endl;
             break;
@@ -447,7 +458,7 @@ public:
 
             for (int j = 3; j < 8; j++) {
                 for (int i = 0; i < 3; i++) { cout << giftid[d[j]][i] << "\t"; }
-                for (int i = 0; i < 80; i++) {
+                for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
                 if (require[d[j]] * b > CC[pos]) {
@@ -456,7 +467,7 @@ public:
                 cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << extra;
                 cout << endl;
             }
-            cout << endl;//show B category
+            cout << endl;
             choose();
             cout << endl;
             break;
@@ -478,7 +489,7 @@ public:
 
             for (int j = 8; j < 12; j++) {
                 cout << giftid[d[j]] << "\t";
-                for (int i = 0; i < 80; i++) {
+                for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
                 if (require[d[j]] * b > CC[pos]) {
@@ -487,7 +498,7 @@ public:
                 cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << "\t" << extra;
                 cout << endl;
             }
-            cout << endl;//show C category
+            cout << endl;
             choose();
             cout << endl;
             break;
@@ -510,7 +521,7 @@ public:
 
             for (int j = 12; j < 15; j++) {
                 cout << giftid[d[j]] << "\t";
-                for (int i = 0; i < 80; i++) {
+                for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
                 if (require[d[j]] * b > CC[pos]) {
@@ -519,7 +530,6 @@ public:
                 cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << extra;
                 cout << endl;
             }
-            cout << endl;//show D category
             cout << endl;
             choose();
             cout << endl;
@@ -571,8 +581,9 @@ public:
                 break;
             }
         }//check which gift user want to choose
-        His_Rem[pos_g][0][0] = His_Rem[pos_g][0][0] + 1;
-        His_Rem[pos_g][0][His_Rem[pos_g][0][0]] = pos_g;//record into history
+        His_Rem[pos][0][0] = His_Rem[pos][0][0] + 1;
+        His_Rem[pos][0][His_Rem[pos][0][0]] = pos_g;//record into history
+
 
         cout << "Please input the amount of CC points used for redemption";
         int k;
@@ -585,16 +596,19 @@ public:
             }
             else { break; }
         }
-        int use_CCpoint;
+        int  use_CCpoint = 0;
         if (k < require[pos_g]) {
             extra = price[pos_g] - round(require[pos_g] * b) * 0.2;
             His_Rem_E[pos_g][0][0] = His_Rem_E[pos_g][0][0] + 1;
             His_Rem_E[pos_g][0][His_Rem[pos_g][0][0]] = extra;
+            use_CCpoint = k;
         }
-        else {
+        cout << "this is " << extra;
+
+        if (k >= require[pos_g]) {
             use_CCpoint = require[pos_g];
         }
-        cout << "Are you comfirm that using " << k << "CC point and " << extra << "extra money for this gift? Notice: input \"Y\" or \"N\"";
+        cout << "Are you comfirm that using " << k << "CC point and   " << extra << "extra money for this gift? Notice: input \"Y\" or \"N\"";
         char u;
         bool valid = false;
 
@@ -611,15 +625,16 @@ public:
                 cin.clear();
             }
         } while (!valid);
-
-        His_Rem_E[pos_g][0][0] = His_Rem_E[pos_g][0][0] + 1;
-        His_Rem_E[pos_g][0][His_Rem[pos_g][0][0]] = CC[pos];
+        //  His_Rem_E[pos_g][0][0] is record history time and His_Rem_E[pos_g][0][His_Rem[pos_g][0][0]] is the recorded history this time.
+        cout << "thank for your redemption!";
+        His_Rem_O[pos][0][0] = His_Rem_O[pos][0][0] + 1;
+        His_Rem_O[pos][0][His_Rem[pos][0][0]] = CC[pos];
         CC[pos] = CC[pos] - use_CCpoint;
-        His_Rem_F[pos_g][0][0] = His_Rem_E[pos_g][0][0] + 1;
-        His_Rem_F[pos_g][0][His_Rem[pos_g][0][0]] = CC[pos];
+        His_Rem_F[pos][0][0] = His_Rem_E[pos][0][0] + 1;
+        His_Rem_F[pos][0][His_Rem[pos][0][0]] = CC[pos];
         custome_view();
     }
-    void modify() {//R4
+    void modify() {
         cout << "\nPlease input of a new CC Points Balance value:";
         int a;
         cin >> a;
@@ -643,6 +658,7 @@ public:
         CC[pos] = a;
         His_Mo_F[pos][0][0] = His_Mo_F[pos][0][0] + 1;
         His_Mo_F[pos][0][His_Mo_F[pos][0][0]] = CC[pos];
+        cout << "successful modify";
         custome_view();
     }
 
@@ -650,111 +666,159 @@ public:
         Menu();
     }
 
-    void history() {
+    void history() // R5:Show Transaction History 
+    {
         cout << endl;
-        cout << "please input your CustomerID:";
+        cout << "Please input your Customer ID: ";
         char user[51];
         cin >> user;
         int same = 0;
         int len = strlen(user);
         cout << endl;
-        for (int i = 1; i <= 3; i++)
-        {
-            for (int i = 0; i < a; i++)
-            {
-                for (int j = 0; j < len; j++) {
-                    if (user[j] == customer_ID[i][j]) {
-                        same++;
-                    }
+
+        // Find the customer ID in the system
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < len; j++) {
+                if (user[j] == customer_ID[i][j]) {
+                    same++;
                 }
-                if (same == len)
-                {
-                    pos_h = i;
-                    break;
-                }
-                else { same = 0; }
             }
-            if (same == 0) {
-                cout << "Error, please input again!";
-                if (i == 3) { Menu(); }
-            }
-            else {
+            if (same == len) {
+                pos_h = i;
                 break;
             }
+            else {
+                same = 0;
+            }
         }
-        //check customerID
-        //show history
-        cout << "Earn CC points:\n";
-        cout << "Spent" << "\t" << "Original" << "\t" << "Final\n";
+
+        if (same == 0) {
+            cout << "Error: Customer ID not found!" << endl;
+            Menu();
+            return;
+        }
+
+        cout << "CC Points Transaction Records History:\n";
+        cout << "--------------------------------------\n";//visual separator
+        cout << "Earn CC Points:\n";
+        cout << "Spent" << "\t" << "Original" << "\t" << "earnCCpoint" << "\t" << "Final\n";
+
+        // Check if any earn CC points transactions recorded
         if (His_E_S[pos_h][0][0] == 0) {
-            cout << "Don't have any operation yet\n";
+            cout << "No transaction records found.\n\n";
         }
-        //earn history
-        for (int i = 1; i <= His_E_S[pos_h][0][0]; i++) {
-            cout << His_E_S[pos_h][0][i] << "\t";
-            cout << His_E_O[pos_h][0][i] << "\t";
-            cout << His_E_M[pos_h][0][i] << endl;
+        else {
+
+
+            // Display the earn CC points transactions
+            for (int i = 1; i <= His_E_S[pos_h][0][0]; i++) {
+                cout << His_E_S[pos_h][0][i] << "\t";
+                cout << His_E_O[pos_h][0][i] << "\t";
+                cout << His_E_M[pos_h][0][i] << "\t";
+                cout << His_E_O[pos_h][0][i] + His_E_M[pos_h][0][i] << endl;
+                // Update the final balance
+
+            }
+
+
+            // Display the summary information
+            cout << "\nSummary:\n";
+            cout << "Original CC Points Balance: " << His_E_O[pos_h][0][1] << endl;
+            cout << "Final CC Points Balance: " << CC[pos_h] << endl;
+            cout << "Change in CC Points Balance: " << CC[pos_h] - His_E_O[pos_h][0][1] << endl;
+
+            cout << "--------------------------------------\n\n"; //visual separator
         }
 
-        cout << "Redeem gift:\n";
-        cout << "Gift ID" << "\t" << "Discription" << "\t" << "Original" << "\t" << "Final" << "\t" << "Extra money\n";
+        cout << "Redeem Gifts:\n";
+        cout << "Gift ID" << "\t" << "Description" << "\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
+
+        // Check if any redeem gifts transactions recorded
         if (His_Rem_O[pos_h][0][0] == 0) {
-            cout << "Don't have any operation yet\n";
+            cout << "No redemption records found.\n\n";
         }
-        //redeem history
-        for (int i = 1; i <= His_Rem_O[pos_h][0][0]; i++) {
-            for (int j = 0; i <= 2; i++) {
-                cout << giftid[His_Rem[pos_h][0][i]][j] << "\t";
+        else {
+            // Display the redeem gifts transactions
+            for (int i = 1; i <= His_Rem_O[pos_h][0][0]; i++) {
+                for (int j = 0; j <= 2; j++) {
+                    cout << giftid[His_Rem[pos_h][0][i]][j] ;
+                }
+                cout << "\t";
+                for (int j = 1; j <= 30; j++) {
+                    cout << des[His_Rem[pos_h][0][i]][j] ;
+                }
+                cout << "\t";
+                cout << His_Rem_O[pos_h][0][i] << "\t";
+                cout << His_Rem_F[pos_h][0][i] << "\t";
+                cout << His_Rem_E[pos_h][0][i] << endl;
             }
-            for (int j = 1; i <= 30; i++) {
-                cout << des[His_Rem[pos_h][0][i]][j] << "\t";
-            }
-            cout << His_Rem_O[pos_h][0][i] << "\t";
-            cout << His_Rem_F[pos_h][0][i] << "\t";
-            cout << His_Rem_E[pos_h][0][i] << endl;
-        }
-        cout << "Modify:" << "( 1 is increase , -1 is decrease and 0 is same )\n";
-        cout << "Type" << "\t" << "Original" << "\t" << "Final\n";
-        if (His_Mo_T[pos_h][0][0] == 0) {
-            cout << "Don't have any operation yet\n";
-        }
-        //modify's history
-        for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++) {
-            cout << His_Mo_T[pos_h][0][i] << "\t";
-            cout << His_Mo_O[pos_h][0][i] << "\t";
-            cout << His_Mo_F[pos_h][0][i] << endl;
+
+            cout << "--------------------------------------\n\n"; //visual separator
         }
 
-        Menu();
+        cout << "Modify CC Points Balance:\n";
+        cout << "Type" << "\t" << "Original" << "\t" << "Final\n";
+
+        // Check if any modify CC points balance transactions recorded
+        if (His_Mo_T[pos_h][0][0] == 0) {
+            cout << "No modification records found.\n";
+        }
+        else {
+            // Display the modify CC points balance transactions
+            for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++) {
+                cout << His_Mo_T[pos_h][0][i] << "\t";
+                cout << His_Mo_O[pos_h][0][i] << "\t";
+                cout << His_Mo_F[pos_h][0][i] << endl;
+            }
+        }
+
+        cout << "--------------------------------------\n\n"; //visual separator
+        Menu(); //back to the Menu
     }
 
-    void edit() {
+    void edit() // R6:Credits and Exit 
+    {
         char u;
         bool valid = false;
 
         do {
-            cout << "Please enter 'Y' or 'N': ";
+            cout << "Please enter 'Y' or 'N': "; // Prompt the user for confirmation
             cin >> u;
 
-            if (u == 'Y') {
-                cout << "we come from G14\n";
-                cout << "name" << "\t" << "Id\n";
-                cout << "Zhan zhixiang" << "\t" << "23081406A";
+            if (u == 'Y' || u == 'y') // Allow user input 'Y' or 'y'
+            {
+                cout << setw(20) << left << "Student Name" << setw(10) << right << "StudentID" << setw(12) << right << "Tutorial Group\n"; // Print table headers
+                cout << setw(20) << left << "Zhan zhixiang" << setw(10) << right << "23081406A" << setw(12) << right << "B04\n"; // Print each row of the table
+                cout << setw(20) << left << "HUANG Kaicong" << setw(10) << right << "21059188A" << setw(12) << right << "B04\n";
+                cout << setw(20) << left << "LO Ho Nam" << setw(10) << right << "23004216A" << setw(12) << right << "B04\n";
+                cout << setw(20) << left << "Yip Chin Tung" << setw(10) << right << "22063753A" << setw(12) << right << "B04\n";
+                cout << setw(20) << left << "TONG Wai Fan" << setw(10) << right << "23172840A" << setw(12) << right << "B04\n";
+                cout << setw(20) << left << "Wong Tsz Tung" << setw(10) << right << "22002723A" << setw(12) << right << "B04\n";
+                valid = true;  // Set valid to true to exit the loop
             }
-            if (u == 'N') {
-                Menu();
+            else if (u == 'N' || u == 'n') // Call the Menu() function to return to the main menu
+            {
+                valid = true;  // Set valid to true to exit the loop
             }
-            else {
+            else // Handle invalid input
+            {
                 cout << "Invalid input. Please try again." << endl;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.clear();
             }
-        } while (!valid);//check if is a valid input
-
-
+        } while (!valid); // Continue looping until a valid input is provided
     }
-    void Menu() {
-        cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents！\nThe detailed information is as fellow. Notice:You should initialize the starting data first. \n";
+
+    void setsize(int col, int row)
+    {
+        char cmd[64];
+        sprintf_s(cmd, sizeof(cmd), "mode con cols=%d lines=%d", col, row);
+        system(cmd);
+    }
+
+    void Menu()
+    {
+        cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents.The detailed information is as fellow. Notice:You should initialize the starting data first. \n";
         cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n [5] Show Transaction History \n [6] Credits and Exit \n* *************** \nOption(1 - 6) :";
         int b;
         cin >> b;
@@ -779,9 +843,9 @@ private:
     int price[15];
     int pos = 0;
     int pos_h = 0;
-    int His_E_S[100][1][100] = { 0 };//3D array, you should take time to make sense
+    int His_E_S[100][1][100] = { 0 };//3D array His_X_X[pos_h][0][0] is times of history His_X_X[pos_h][0][His_X_X[pos_h][0][0]] is specific record
     int His_E_M[100][1][100] = { 0 };
-    int His_E_O[100][1][100] = { 0 };
+    int His_E_O[100][1][100] = { 0 };//O:original  and   F:final
     int His_Rem[100][1][100] = { 0 };
     int His_Rem_E[100][1][100] = { 0 };
     int His_Rem_O[100][1][100] = { 0 };
@@ -795,11 +859,12 @@ private:
 };
 int main()
 {
-  
-    
+
+
 
     redemption sys;
-    cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents锛乗nThe detailed information is as fellow. Notice:You should initialize the starting data first. \n";
+    sys.setsize(150, 150);
+    cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents . The detailed information is as fellow. Notice:You should initialize the starting data first. \n";
     cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n[5] Show Transaction History \n[6] Credits and Exit \n* *************** \nOption(1 - 6) :";
     int c;//showMainMenu();
     cin >> c;
@@ -816,36 +881,58 @@ int main()
     return 0;
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
+// 閺夆晜鍔橀、鎴犵矙鐎ｎ亞纰? Ctrl + F5 闁瑰瓨鐗為惃鐔烘嫚?>闁炽儲绮岀槐鎴炴叏鐎ｎ偄鈷旈悶?濞戞挸绉烽惃鐔烘嫚?闁炽儲绻嗚ぐ宥夊础?
+// 閻犲鍟抽惁顖滅矙鐎ｎ亞纰? F5 闁瑰瓨鐗為惃鐔烘嫚?>闁炽儲绮岀槐鎴炴叏鐎ｎ厾娈堕悹鍥ㄦ磵閳ь剚绻嗚ぐ宥夊础?
 
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+// 闁稿繈鍎靛Λ顒佹媴鐠恒劍鏆忛柟鍨涘亾鐎? 
+//   1. 濞达綀娉曢弫銈囨喆閿濆懎鏋€闁哄倽顫夐、宥囨導閸曨剛鐖辩紒鐙呯磿閹﹪宕抽妸褏宕堕柛娆欑稻閸у﹪宕?缂佺媴绱曢幃濠囧棘閸ワ附顐?
+//   2. 濞达綀娉曢弫銈夊炊閵忋倖袝閻犙冨缁喚绮婚敍鍕€為柛锝冨妿閻涖儵宕ｉ敐鍫㈢闁规亽鍎遍崺灞解攦閹邦亜鏁╅柣顔昏兌椤撴悂鎮?
+//   3. 濞达綀娉曢弫銈嗘綇閹惧啿姣夌紒鎰殔瑜版盯寮婚妷褎绠欓柣銏㈠枑閸ㄦ碍娼忛幘鍐叉瘔闁告粌鑻崣鐐閺嶃劎啸闁?
+//   4. 濞达綀娉曢弫銈夋煥濞嗘帩鍤栭柛鎺擃殙閵嗗啰绮ｅΔ鈧ぐ娑㈠蓟閵壯勭畽闂佹寧鐟ㄩ?
+//   5. 閺夌儐鍓欓崺宀勫灳濠婂牄鈧秹鎯勯鍏夊亾?闁炽儲绮嶉崸濠囧礉閻樿櫕鐓€濡炪倕鍘滈埀顒佺箑娴滄帡宕氬☉妯肩处闁哄倹澹嗗▓鎴炵閿濆洨鍨抽柡鍌氭矗濞嗐垽鏁嶇仦鎯х仐閺夌儐鍓欓崺宀勫灳濠婂牄鈧秹鎯勯鍏夊亾?闁炽儲绮嶉崸濠囧礉閻橀潧绠涢柡鍫濐樀閵嗗秹鍨惧┑鍛鞍閻忓繐妫涢獮鍥嫉婢跺鏁╅柣顔荤劍閺嬪啯绂掗懜闈涙綉闁告梻濮撮崺灞俱亜閸︻厽绐?
+//   6. 閻忓繐妫欏鐢告晬瀹€鍐仧閻熸洑绀侀崯鈧繛鍡忓墲婢э箑顕ｉ埀顒€顫㈤妶澶堚偓宥夋儎椤曞棛绀夐悹鍥╂焿濞村棝宕氶幍鏂ュ亾濠婂嫭鐎ù鐘茬亪閳?闁炽儲绮嶆晶锕€顕ｉ埀顒勫灳?闁炽儲绮撻妴宥夋儎椤斿厜鍋撳┑鍡氬珯闂侇偄顦扮€?.sln 闁哄倸娲ｅ▎?
 
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
+// 閺夆晜鍔橀、鎴犵矙鐎ｎ亞纰? Ctrl + F5 闁瑰瓨鐗為惃鐔烘嫚?>闁炽儲绮岀槐鎴炴叏鐎ｎ偄鈷旈悶?濞戞挸绉烽惃鐔烘嫚?闁炽儲绻嗚ぐ宥夊础?
+// 閻犲鍟抽惁顖滅矙鐎ｎ亞纰? F5 闁瑰瓨鐗為惃鐔烘嫚?>闁炽儲绮岀槐鎴炴叏鐎ｎ厾娈堕悹鍥ㄦ磵閳ь剚绻嗚ぐ宥夊础?
 
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+// 闁稿繈鍎靛Λ顒佹媴鐠恒劍鏆忛柟鍨涘亾鐎? 
+//   1. 濞达綀娉曢弫銈囨喆閿濆懎鏋€闁哄倽顫夐、宥囨導閸曨剛鐖辩紒鐙呯磿閹﹪宕抽妸褏宕堕柛娆欑稻閸у﹪宕?缂佺媴绱曢幃濠囧棘閸ワ附顐?
+//   2. 濞达綀娉曢弫銈夊炊閵忋倖袝閻犙冨缁喚绮婚敍鍕€為柛锝冨妿閻涖儵宕ｉ敐鍫㈢闁规亽鍎遍崺灞解攦閹邦亜鏁╅柣顔昏兌椤撴悂鎮?
+//   3. 濞达綀娉曢弫銈嗘綇閹惧啿姣夌紒鎰殔瑜版盯寮婚妷褎绠欓柣銏㈠枑閸ㄦ碍娼忛幘鍐叉瘔闁告粌鑻崣鐐閺嶃劎啸闁?
+//   4. 濞达綀娉曢弫銈夋煥濞嗘帩鍤栭柛鎺擃殙閵嗗啰绮ｅΔ鈧ぐ娑㈠蓟閵壯勭畽闂佹寧鐟ㄩ?
+//   5. 閺夌儐鍓欓崺宀勫灳濠婂牄鈧秹鎯勯鍏夊亾?闁炽儲绮嶉崸濠囧礉閻樿櫕鐓€濡炪倕鍘滈埀顒佺箑娴滄帡宕氬☉妯肩处闁哄倹澹嗗▓鎴炵閿濆洨鍨抽柡鍌氭矗濞嗐垽鏁嶇仦鎯х仐閺夌儐鍓欓崺宀勫灳濠婂牄鈧秹鎯勯鍏夊亾?闁炽儲绮嶉崸濠囧礉閻橀潧绠涢柡鍫濐樀閵嗗秹鍨惧┑鍛鞍閻忓繐妫涢獮鍥嫉婢跺鏁╅柣顔荤劍閺嬪啯绂掗懜闈涙綉闁告梻濮撮崺灞俱亜閸︻厽绐?
+//   6. 閻忓繐妫欏鐢告晬瀹€鍐仧閻熸洑绀侀崯鈧繛鍡忓墲婢э箑顕ｉ埀顒€顫㈤妶澶堚偓宥夋儎椤曞棛绀夐悹鍥╂焿濞村棝宕氶幍鏂ュ亾濠婂嫭鐎ù鐘茬亪閳?闁炽儲绮嶆晶锕€顕ｉ埀顒勫灳?闁炽儲绮撻妴宥夋儎椤斿厜鍋撳┑鍡氬珯闂侇偄顦扮€?.sln 闁哄倸娲ｅ▎?
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
+// 閺夆晜鍔橀、鎴犵矙鐎ｎ亞纰? Ctrl + F5 闁瑰瓨鐗為惃鐔烘嫚?>闁炽儲绮岀槐鎴炴叏鐎ｎ偄鈷旈悶?濞戞挸绉烽惃鐔烘嫚?闁炽儲绻嗚ぐ宥夊础?
+// 閻犲鍟抽惁顖滅矙鐎ｎ亞纰? F5 闁瑰瓨鐗為惃鐔烘嫚?>闁炽儲绮岀槐鎴炴叏鐎ｎ厾娈堕悹鍥ㄦ磵閳ь剚绻嗚ぐ宥夊础?
 
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+// 闁稿繈鍎靛Λ顒佹媴鐠恒劍鏆忛柟鍨涘亾鐎? 
+//   1. 濞达綀娉曢弫銈囨喆閿濆懎鏋€闁哄倽顫夐、宥囨導閸曨剛鐖辩紒鐙呯磿閹﹪宕抽妸褏宕堕柛娆欑稻閸у﹪宕?缂佺媴绱曢幃濠囧棘閸ワ附顐?
+//   2. 濞达綀娉曢弫銈夊炊閵忋倖袝閻犙冨缁喚绮婚敍鍕€為柛锝冨妿閻涖儵宕ｉ敐鍫㈢闁规亽鍎遍崺灞解攦閹邦亜鏁╅柣顔昏兌椤撴悂鎮?
+//   3. 濞达綀娉曢弫銈嗘綇閹惧啿姣夌紒鎰殔瑜版盯寮婚妷褎绠欓柣銏㈠枑閸ㄦ碍娼忛幘鍐叉瘔闁告粌鑻崣鐐閺嶃劎啸闁?
+//   4. 濞达綀娉曢弫銈夋煥濞嗘帩鍤栭柛鎺擃殙閵嗗啰绮ｅΔ鈧ぐ娑㈠蓟閵壯勭畽闂佹寧鐟ㄩ?
+//   5. 閺夌儐鍓欓崺宀勫灳濠婂牄鈧秹鎯勯鍏夊亾?闁炽儲绮嶉崸濠囧礉閻樿櫕鐓€濡炪倕鍘滈埀顒佺箑娴滄帡宕氬☉妯肩处闁哄倹澹嗗▓鎴炵閿濆洨鍨抽柡鍌氭矗濞嗐垽鏁嶇仦鎯х仐閺夌儐鍓欓崺宀勫灳濠婂牄鈧秹鎯勯鍏夊亾?闁炽儲绮嶉崸濠囧礉閻橀潧绠涢柡鍫濐樀閵嗗秹鍨惧┑鍛鞍閻忓繐妫涢獮鍥嫉婢跺鏁╅柣顔荤劍閺嬪啯绂掗懜闈涙綉闁告梻濮撮崺灞俱亜閸︻厽绐?
+//   6. 閻忓繐妫欏鐢告晬瀹€鍐仧閻熸洑绀侀崯鈧繛鍡忓墲婢э箑顕ｉ埀顒€顫㈤妶澶堚偓宥夋儎椤曞棛绀夐悹鍥╂焿濞村棝宕氶幍鏂ュ亾濠婂嫭鐎ù鐘茬亪閳?闁炽儲绮嶆晶锕€顕ｉ埀顒勫灳?闁炽儲绮撻妴宥夋儎椤斿厜鍋撳┑鍡氬珯闂侇偄顦扮€?.sln 闁哄倸娲ｅ▎?
+
+// 鏉╂劘顢戠粙瀣碍: Ctrl + F5 閹存牞鐨熺拠?>閳ユ粌绱戞慨瀣⒔鐞?娑撳秷鐨熺拠?閳ユ繆褰嶉崡?
+// 鐠嬪啳鐦粙瀣碍: F5 閹存牞鐨熺拠?>閳ユ粌绱戞慨瀣殶鐠囨洍鈧繆褰嶉崡?
+
+// 閸忋儵妫担璺ㄦ暏閹垛偓瀹? 
+//   1. 娴ｈ法鏁ょ憴锝呭枀閺傝顢嶇挧鍕爱缁狅紕鎮婇崳銊х崶閸欙絾鍧婇崝?缁狅紕鎮婇弬鍥︽
+//   2. 娴ｈ法鏁ら崶銏ゆЕ鐠у嫭绨粻锛勬倞閸ｃ劎鐛ラ崣锝堢箾閹恒儱鍩屽┃鎰敩閻胶顓搁悶?
+//   3. 娴ｈ法鏁ゆ潏鎾冲毉缁愭褰涢弻銉ф箙閻㈢喐鍨氭潏鎾冲毉閸滃苯鍙炬禒鏍ㄧХ閹?
+//   4. 娴ｈ法鏁ら柨娆掝嚖閸掓銆冪粣妤€褰涢弻銉ф箙闁挎瑨顕?
+//   5. 鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘虫煀妞ゅ厜鈧繀浜掗崚娑樼紦閺傛壆娈戞禒锝囩垳閺傚洣娆㈤敍灞惧灗鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘靛箛閺堝銆嶉垾婵呬簰鐏忓棛骞囬張澶夊敩閻焦鏋冩禒鑸靛潑閸旂姴鍩屾い鍦窗
+//   6. 鐏忓棙娼甸敍宀冨鐟曚礁鍟€濞?
+// 鏉╂劘顢戠粙瀣碍: Ctrl + F5 閹存牞鐨熺拠?>閳ユ粌绱戞慨瀣⒔鐞?娑撳秷鐨熺拠?閳ユ繆褰嶉崡?
+// 鐠嬪啳鐦粙瀣碍: F5 閹存牞鐨熺拠?>閳ユ粌绱戞慨瀣殶鐠囨洍鈧繆褰嶉崡?
+
+// 閸忋儵妫担璺ㄦ暏閹垛偓瀹? 
+//   1. 娴ｈ法鏁ょ憴锝呭枀閺傝顢嶇挧鍕爱缁狅紕鎮婇崳銊х崶閸欙絾鍧婇崝?缁狅紕鎮婇弬鍥︽
+//   2. 娴ｈ法鏁ら崶銏ゆЕ鐠у嫭绨粻锛勬倞閸ｃ劎鐛ラ崣锝堢箾閹恒儱鍩屽┃鎰敩閻胶顓搁悶?
+//   3. 娴ｈ法鏁ゆ潏鎾冲毉缁愭褰涢弻銉ф箙閻㈢喐鍨氭潏鎾冲毉閸滃苯鍙炬禒鏍ㄧХ閹?
+//   4. 娴ｈ法鏁ら柨娆掝嚖閸掓銆冪粣妤€褰涢弻銉ф箙闁挎瑨顕?
+//   5. 鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘虫煀妞ゅ厜鈧繀浜掗崚娑樼紦閺傛壆娈戞禒锝囩垳閺傚洣娆㈤敍灞惧灗鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘靛箛閺堝銆嶉垾婵呬簰鐏忓棛骞囬張澶夊敩閻焦鏋冩禒鑸靛潑閸旂姴鍩屾い鍦窗
+//   6. 鐏忓棙娼甸敍宀冨鐟曚礁鍟€濞嗏剝澧﹀鈧銈夈€嶉惄顕嗙礉鐠囩柉娴嗛崚鎵斥偓婊勬瀮娴犲灈鈧?閳ユ粍澧﹀鈧垾?閳ユ粓銆嶉惄顔光偓婵嗚嫙闁瀚?.sln 閺傚洣娆?
+
