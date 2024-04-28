@@ -1,6 +1,3 @@
-// ConsoleApplication7.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-// ConsoleApplication7.cpp :
-//
 #include<iostream>
 #include <iomanip>
 #include<cstring>
@@ -337,10 +334,22 @@ public:
                 }
                 */
 
-                cout << "Please enter points balance value:\n";
+               
                 int v;
+                do {
+                    cout << "Please enter points balance value:\n";
+                    cin >> v;
 
-                cin >> v;
+                    if (cin.fail() || v < 0) {
+                        cin.clear(); 
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');  
+                        cout << "invalid input, please try again\n";
+                    }
+                    else {
+                        break; // Exit the loop if a valid input is provided
+                    }
+                } while (true);
+                
                 CC[a - 1] = v;
 
                 strcpy_s(customer_ID[a - 1], sizeof(customer_ID[9]), user);
@@ -425,7 +434,20 @@ public:
         cout << "************************** \n";
         cout << "Option(1 - 4) :";
         int b;
-        cin >> b;
+       
+        do {
+            cout << "Please enter option:\n";
+            cin >> b;
+
+            if (cin.fail() || b < 0||b>4) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "invalid input, please try again\n";
+            }
+            else {
+                break; // Exit the loop if a valid input is provided
+            }
+        } while (true);
         switch (b) {
         case 1:earn(); break;
         case 2:redeem(); break;
@@ -437,8 +459,21 @@ public:
     }
     void earn() {
         float a;
-        cout << " Please input the amount of money spent for converting to CC points.\n";
-        cin >> a;
+        
+       
+        do {
+            cout << " Please input the amount of money spent for converting to CC points.\n";
+            cin >> a;
+
+            if (cin.fail() || a < 0 ) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "invalid input, please try again\n";
+            }
+            else {
+                break; // Exit the loop if a valid input is provided
+            }
+        } while (true);
         int b = floor(a);
         His_E_S[pos][0][0] = His_E_S[pos][0][0] + 1;
         His_E_S[pos][0][His_E_S[pos][0][0]] = a;
@@ -689,7 +724,7 @@ public:
             His_Rem_E[pos][0][His_Rem[pos][0][0]] = extra;
             use_CCpoint = k;
         }
-        cout << "This is " << extra << "\n";
+       
 
         if (k >= require[pos_g]) {
             use_CCpoint = require[pos_g];
@@ -763,9 +798,22 @@ public:
         custome_view();
     }
     void modify() {
-        cout << "\nPlease input of a new CC Points Balance value:";
+       
         int a;
-        cin >> a;
+       
+        do {
+            cout << "Please enter points balance value:\n";
+            cin >> a;
+
+            if (cin.fail() || a<0) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "invalid input, please try again\n";
+            }
+            else {
+                break; // Exit the loop if a valid input is provided
+            }
+        } while (true);
         int b;
         if (a > CC[pos]) {
             b = 1;
@@ -869,7 +917,7 @@ public:
         for (int row = 1; row <= 100; row++) { cout << "="; }
         cout << endl;//Line
         cout << "Redeem Gifts:\n";
-        cout << "Gift ID" << "\t" << "Description" << "                    "<<"\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
+        cout << "Gift ID" << "\t" << "Description" << "                    " << "\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
         for (int row = 1; row <= 100; row++) { cout << "="; }
         cout << endl;//Line
 
@@ -988,9 +1036,8 @@ public:
             << "[" << type[2] << "]" << "Edit Customers\n" << "[" << type[3] << "]" << "Enter Customer View\n"
             << "[" << type[4] << "]" << "Show Transaction History\n" << "[" << type[5] << "]" << "Credits and Exit\n" << "*****************" << endl;
         cout << "Option(1-6): " << endl;//show total of options
+        
         cin >> opt;
-
-
         switch (opt) {
         case '1':load(); break;
         case '2': record(); break;
@@ -1132,4 +1179,15 @@ int main()
 //   3. 娴ｈ法鏁ゆ潏鎾冲毉缁愭褰涢弻銉ф箙閻㈢喐鍨氭潏鎾冲毉閸滃苯鍙炬禒鏍ㄧХ閹?
 //   4. 娴ｈ法鏁ら柨娆掝嚖閸掓銆冪粣妤€褰涢弻銉ф箙闁挎瑨顕?
 //   5. 鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘虫煀妞ゅ厜鈧繀浜掗崚娑樼紦閺傛壆娈戞禒锝囩垳閺傚洣娆㈤敍灞惧灗鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘靛箛閺堝銆嶉垾婵呬簰鐏忓棛骞囬張澶夊敩閻焦鏋冩禒鑸靛潑閸旂姴鍩屾い鍦窗
-//   6. 鐏忓棙娼甸敍宀冨鐟曚礁鍟€濞嗏剝澧﹀鈧銈夈€嶉惄顕嗙礉鐠囩柉娴嗛崚鎵斥偓婊勬瀮娴犲灈鈧?閳ユ粍澧﹀鈧垾?閳ユ粓銆嶉惄顔光偓婵嗚嫙闁瀚?.sln 閺傚洣娆?
+//   6. 鐏忓棙娼甸敍宀冨
+
+// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
+// 调试程序: F5 或调试 >“开始调试”菜单
+
+// 入门使用技巧: 
+//   1. 使用解决方案资源管理器窗口添加/管理文件
+//   2. 使用团队资源管理器窗口连接到源代码管理
+//   3. 使用输出窗口查看生成输出和其他消息
+//   4. 使用错误列表窗口查看错t 
+//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
+//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
