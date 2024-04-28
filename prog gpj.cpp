@@ -1,4 +1,5 @@
 // ConsoleApplication7.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// ConsoleApplication7.cpp :
 //
 #include<iostream>
 #include <iomanip>
@@ -41,10 +42,10 @@ public:
         strcpy_s(des[5], sizeof(des[5]), "Famous Coffee Maker");
         strcpy_s(des[6], sizeof(des[6]), "Smart Rice Cooker");
         strcpy_s(des[7], sizeof(des[7]), "TechCook Toaster Oven");
-        strcpy_s(des[8], sizeof(des[8]), "Wellcome 50 Coupon");
-        strcpy_s(des[9], sizeof(des[9]), "Mannings 50 Coupon");
+        strcpy_s(des[8], sizeof(des[8]), "WellCome 50 Coupon");
+        strcpy_s(des[9], sizeof(des[9]), "Mannings 50 Coupon ");
         strcpy_s(des[10], sizeof(des[10]), "Carol Restaurant 100 Coupon");
-        strcpy_s(des[11], sizeof(des[11]), "Shell 200 Coupon");
+        strcpy_s(des[11], sizeof(des[11]), "Shell 200 Coupon ");
         strcpy_s(des[12], sizeof(des[12]), "Clever Headset");
         strcpy_s(des[13], sizeof(des[13]), "HP Optic Mouse");
         strcpy_s(des[14], sizeof(des[14]), "Stylish Bluetooth Speaker");
@@ -166,9 +167,11 @@ public:
 
         }
         //show data in alphabet order.
-        cout << "customer_name";
+        cout << "Customer_Name";
         cout << "  " << "\t";
-        cout << " Rank" << "\t" << "CC";
+        cout << "Rank" << "\t" << "CC";
+        cout << endl;
+        for (int row = 1; row <= 100; row++) { cout << "-"; }
         cout << endl;
         for (int j = 0; j <= a - 1; j++) {
             cout << customer_ID[d[j]];
@@ -177,18 +180,58 @@ public:
             cout << endl;
         }
         cout << endl;
-        cout << "giftid" << "\t";
-        cout << "description";
-        for (int i = 1; i <= 30; i++) { cout << " "; }
-        cout << "\t" << " price" << "\t" << " require";
+        for (int row = 1; row <= 100; row++) { cout << "-"; }
         cout << endl;
+        //Downarrow
+        cout << "   " << "----" << endl;
+        for (int y = 0; y <= 5; y++)
+        {
+            if (y == 5)
+            {
+                for (int x = 1; x <= 10; x++)
+                {
+                    if (x >= 0 && x < 4 || x>7 && x <= 10) { cout << "-"; }
+                    else { cout << " "; }
+                }break;
+            }
+            else if (y >= 0) { cout << "   " << "|" << "  " << "|" << endl; }
+            else{ cout << " "; }
+        }cout << endl;
+        for (int row = 1; row <= 10; row++)
+        {
+            for (int col = 1; col <= 10; col++)
+            {
+                if (col == row) { cout << "\\"; }
+                else if (col + row == 10 + 1) { cout << "/"; }
+                else { cout << " "; }
+                if (row >= 6)
+                {
+                    cout << " ";
+                    col = 10;
+                    row = 10;
+                }
+            }cout << endl;
+        }//Downarrow End
+        for (int row = 1; row <= 100; row++) { cout << "="; }//Line
+        cout << endl;
+        cout << "Giftid" << "\t";
+        cout << "Description";
+        
+        for (int i = 1; i <= 30; i++) { cout << ""; }
+        cout <<"\t\t\t\t"<<"|"<<"Price"<<"| "<<"\t"<< "|" << "CC Requirement" << "| " << endl;
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
+        
         for (int j = 0; j < 15; j++) {
-            cout << giftid[j] << "\t";
-            cout << des[j];
+            cout << left<<giftid[j] << "\t"<< des[j];
             for (int i = 1; i <= 40 - strlen(des[j]); i++) { cout << " "; }
-            cout << "\t" << price[j] << "\t" << require[j];
+            
+            cout << "|$" << price[j] <<"|" <<"\t\t" << "|" << require[j] << "|" << endl;
+            for (int row = 1; row <= 100; row++) { cout << "-"; }
             cout << endl;
         }
+        cout << endl;
+        for (int row = 1; row <= 100; row++) { cout << "-"; }
         cout << endl;
         Menu();
 
@@ -225,8 +268,11 @@ public:
                 cout << "To add your account, please input the date that the you became a member(in the format DD / MM / YYYY)\n";
                 //check whether day,month,year fit to the range
                 do {
+                    for (int row = 1; row <= 100; row++) { cout << "="; }
+                    cout << endl;//Line
                     cout << "Plase enter your joinning day(DD): ";
                     cin >> k;
+                   
                     if (!cin.fail() && k > 0 && k <= 30) {
                         break;
                     }
@@ -237,8 +283,12 @@ public:
                     }
                 } while (1);
                 do {
+                    for (int row = 1; row <= 100; row++) { cout << "="; }
+                    cout << endl;//Line
                     cout << "Please enter your joinning month(MM):";
                     cin >> b;
+                    for (int row = 1; row <= 100; row++) { cout << "="; }
+                    cout << endl;//Line
                     if (!cin.fail() && b > 0 && b <= 12) {
                         break;
                     }
@@ -249,8 +299,11 @@ public:
                     }
                 } while (1);
                 do {
+                
                     cout << "Plase enter your joinning year(YYYY): ";
                     cin >> c;
+                    for (int row = 1; row <= 100; row++) { cout << "="; }
+                    cout << endl;//Line
                     if (!cin.fail() && c > 1970 && c <= 2024) {
                         break;
                     }
@@ -279,21 +332,25 @@ public:
                 CC[a - 1] = v;
 
                 strcpy_s(customer_ID[a - 1], sizeof(customer_ID[9]), user);
-                cout << "Successful add!\n";
+                for (int row = 1; row <= 100; row++) { cout << "="; }
+                cout << endl;//Line
+                cout << "Successful Add!\n";
+                for (int row = 1; row <= 100; row++) { cout << "="; }
+                cout << endl;//Line
                 Menu();
             }
             if (check == 'n') { Menu(); }
         }
         else
         {
-            cout << "would you want to delect this new account from system? 'y'or'n'";
+            cout << "would you want to delete this new account from system? 'y'or'n'";
             char check2;
             cin >> check2;
             if (check2 == 'y')
             {
-                cout << "successful delect!\n";
+                cout << "successful delete!\n";
                 a = a - 1;
-                //delect position customer with閳?閳ユ獌nd swap the last customer to the position.
+                //delete position customer withnd swap the last customer to the position.
                 for (int i = 0; i <= 30; i++) {
                     customer_ID[pos][i] = ' ';
                     customer_ID[pos][i] = customer_ID[a][i];
@@ -310,7 +367,7 @@ public:
 
     }
     void custome_log() {//this function is to check whether the input customerID is correct
-        cout << "please input your CustomerID:";
+        cout << "Please input your CustomerID:";
         char user[51];
         cin >> user;
         int same = 0;
@@ -347,7 +404,7 @@ public:
     {//R4
         cout << endl;
 
-        cout << "Action for Customer ID: " << customerName << "\n";
+        cout << "Action for Customer ID: " << customerName << endl;
         cout << "*****Customer View Menu *****\n";
         cout << "[1] Earn CC Points\n";
         cout << "[2] Redeem Gifts\n";
@@ -360,7 +417,7 @@ public:
         switch (b) {
         case 1:earn(); break;
         case 2:redeem(); break;
-        case 3: modify(); break;
+        case 3:modify(); break;
         case 4:return_(); break;
         default:break;
         }
@@ -396,7 +453,11 @@ public:
             b = 1;
         }
         cout << "choose a category of your gift.(A/B/C/D):\n";
-        cout << "giftid" << "\t" << "description" << "\t" << "price" << "\t" << "require" << "\t" << "need extra money?" << endl;
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
+        cout << "Giftid" << "\t\t" << "Description" << "\t\t\t" << "Price" << "\t\t" << "Require" << "\t\t" << "Need extra money?" << endl;
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         char f;
         int a[15] = { 0 };
         int d[15] = { 0 };
@@ -424,14 +485,15 @@ public:
             }
 
             for (int j = 0; j < 3; j++) {
-                cout << giftid[d[j]] << "\t";
+                cout << "|"<<giftid[d[j]]<<"|" << "\t\t";
                 for (int i = 0; i < 20; i++) {
-                    cout << des[j][i];
+                    cout <<des[j][i];
+                 
                 }
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << extra;
+                cout << "\t\t" << "|$"<<price[d[j]]<<"|" << "\t\t" << "|"<<require[d[j]] * b << extra<<"|";
                 cout << endl;
             }
             cout << endl;
@@ -457,14 +519,14 @@ public:
             }
 
             for (int j = 3; j < 8; j++) {
-                for (int i = 0; i < 3; i++) { cout << giftid[d[j]][i] << "\t"; }
+                cout << "|"<<giftid[d[j]]<<"|" << "\t\t";
                 for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << extra;
+                cout << "\t\t" << "|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
                 cout << endl;
             }
             cout << endl;
@@ -488,14 +550,14 @@ public:
             }
 
             for (int j = 8; j < 12; j++) {
-                cout << giftid[d[j]] << "\t";
+                cout << "|" << giftid[d[j]] << "|" << "\t\t";
                 for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << "\t" << extra;
+                cout << "\t\t" <<"|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
                 cout << endl;
             }
             cout << endl;
@@ -520,28 +582,35 @@ public:
             }
 
             for (int j = 12; j < 15; j++) {
-                cout << giftid[d[j]] << "\t";
+                cout << "|" << giftid[d[j]] << "|" << "\t\t";
                 for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
+            
+                
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t" << price[d[j]] << "\t" << require[d[j]] * b << extra;
+                cout << "\t\t" <<"|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
                 cout << endl;
+                
             }
+            for (int row = 1; row <= 100; row++) { cout << "="; }
+            cout << endl;//Line
             cout << endl;
             choose();
             cout << endl;
             break;
 
-        default:cout << "error";
+        default:cout << "Error";
             break;
         }
     }
 
     void choose() {//select the gift for redemption
-        cout << "input gift ID:\n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
+        cout << "Input gift ID:\n";
         float b;
         int extra = 0;
         if (Rank[pos] == 'G') {
@@ -585,13 +654,15 @@ public:
         His_Rem[pos][0][His_Rem[pos][0][0]] = pos_g;//record into history
 
 
-        cout << "Please input the amount of CC points used for redemption";
+        cout << "Please input the amount of CC points used for redemption: \n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         int k;
 
         for (int i = 1; i <= 3; i++) {
             cin >> k;
             if (cin.fail() || k > CC[pos] || k < 0) {
-                cout << "error\n";
+                cout << "Error\n";
                 if (i == 3) { Menu(); }
             }
             else { break; }
@@ -603,30 +674,72 @@ public:
             His_Rem_E[pos_g][0][His_Rem[pos_g][0][0]] = extra;
             use_CCpoint = k;
         }
-        cout << "this is " << extra;
+        cout << "This is " << extra<<"\n";
 
         if (k >= require[pos_g]) {
             use_CCpoint = require[pos_g];
         }
-        cout << "Are you comfirm that using " << k << "CC point and   " << extra << "extra money for this gift? Notice: input \"Y\" or \"N\"";
+        for (int row = 1; row <= 100; row++) { cout << "!"; }
+        cout << endl;//Line
+        cout << "Are you confirm that using " << k << "CC point and   " << extra << " extra money for this gift?\n "<<endl;
+        for (int row = 1; row <= 100; row++) { cout << "!"; }
+        cout << endl;//Line
+        cout<<"\nNotice: input \"Y\" or \"N\"\n"<<endl;
+        for (int row = 1; row <= 100; row++) { cout << "!"; }
+        cout << endl;//Line
+        //Downarrow
+        cout << "   " << "----" << endl;
+        for (int y = 0; y <= 5; y++)
+        {
+            if (y == 5)
+            {
+                for (int x = 1; x <= 10; x++)
+                {
+                    if (x >= 0 && x < 4 || x>7 && x <= 10) { cout << "-"; }
+                    else { cout << " "; }
+                }break;
+            }
+            else if (y >= 0) { cout << "   " << "|" << "  " << "|" << endl; }
+            else { cout << " "; }
+        }cout << endl;
+        for (int row = 1; row <= 10; row++)
+        {
+            for (int col = 1; col <= 10; col++)
+            {
+                if (col == row) { cout << "\\"; }
+                else if (col + row == 10 + 1) { cout << "/"; }
+                else { cout << " "; }
+                if (row >= 6)
+                {
+                    cout << " ";
+                    col = 10;
+                    row = 10;
+                }
+            }cout << endl;
+        }//Downarrow End
+        
         char u;
         bool valid = false;
 
         do {
-            cout << "Please enter 'Y' or 'N': ";
+            cout << "\nPlease enter 'Y' or 'N': "<<endl;
             cin >> u;
 
             if (u == 'Y' || u == 'N') {
                 valid = true;
             }
             else {
-                cout << "Invalid input. Please try again." << endl;
+                cout << "\nInvalid input. Please try again." << endl;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cin.clear();
             }
         } while (!valid);
         //  His_Rem_E[pos_g][0][0] is record history time and His_Rem_E[pos_g][0][His_Rem[pos_g][0][0]] is the recorded history this time.
-        cout << "thank for your redemption!";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
+        cout << "Thanks for your redemption!\n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         His_Rem_O[pos][0][0] = His_Rem_O[pos][0][0] + 1;
         His_Rem_O[pos][0][His_Rem[pos][0][0]] = CC[pos];
         CC[pos] = CC[pos] - use_CCpoint;
@@ -658,7 +771,11 @@ public:
         CC[pos] = a;
         His_Mo_F[pos][0][0] = His_Mo_F[pos][0][0] + 1;
         His_Mo_F[pos][0][His_Mo_F[pos][0][0]] = CC[pos];
-        cout << "successful modify";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
+        cout << "Successful modify\n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         custome_view();
     }
 
@@ -701,8 +818,9 @@ public:
         cout << "CC Points Transaction Records History:\n";
         cout << "--------------------------------------\n";//visual separator
         cout << "Earn CC Points:\n";
-        cout << "Spent" << "\t" << "Original" << "\t" << "earnCCpoint" << "\t" << "Final\n";
-
+        cout << "Spent" << "\t" << "Original" << "\t" << "EarnCCpoint" << "\t" << "Final\n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         // Check if any earn CC points transactions recorded
         if (His_E_S[pos_h][0][0] == 0) {
             cout << "No transaction records found.\n\n";
@@ -713,8 +831,8 @@ public:
             // Display the earn CC points transactions
             for (int i = 1; i <= His_E_S[pos_h][0][0]; i++) {
                 cout << His_E_S[pos_h][0][i] << "\t";
-                cout << His_E_O[pos_h][0][i] << "\t";
-                cout << His_E_M[pos_h][0][i] << "\t";
+                cout << His_E_O[pos_h][0][i] << "\t\t";
+                cout << His_E_M[pos_h][0][i] << "\t\t";
                 cout << His_E_O[pos_h][0][i] + His_E_M[pos_h][0][i] << endl;
                 // Update the final balance
 
@@ -722,20 +840,28 @@ public:
 
 
             // Display the summary information
-            cout << "\nSummary:\n";
+            for (int row = 1; row <= 100; row++) { cout << "="; }
+            cout << endl;//Line
+            cout << "Summary:\n";
+            for (int row = 1; row <= 100; row++) { cout << "="; }
+            cout << endl;//Line
             cout << "Original CC Points Balance: " << His_E_O[pos_h][0][1] << endl;
             cout << "Final CC Points Balance: " << CC[pos_h] << endl;
             cout << "Change in CC Points Balance: " << CC[pos_h] - His_E_O[pos_h][0][1] << endl;
 
             cout << "--------------------------------------\n\n"; //visual separator
         }
-
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         cout << "Redeem Gifts:\n";
         cout << "Gift ID" << "\t" << "Description" << "\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
 
         // Check if any redeem gifts transactions recorded
         if (His_Rem_O[pos_h][0][0] == 0) {
             cout << "No redemption records found.\n\n";
+            cout << "--------------------------------------\n\n";
         }
         else {
             // Display the redeem gifts transactions
@@ -755,9 +881,12 @@ public:
 
             cout << "--------------------------------------\n\n"; //visual separator
         }
-
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
         cout << "Modify CC Points Balance:\n";
         cout << "Type" << "\t" << "Original" << "\t" << "Final\n";
+        for (int row = 1; row <= 100; row++) { cout << "="; }
+        cout << endl;//Line
 
         // Check if any modify CC points balance transactions recorded
         if (His_Mo_T[pos_h][0][0] == 0) {
@@ -768,7 +897,7 @@ public:
             for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++) {
                 cout << His_Mo_T[pos_h][0][i] << "\t";
                 cout << His_Mo_O[pos_h][0][i] << "\t";
-                cout << His_Mo_F[pos_h][0][i] << endl;
+                cout << His_Mo_F[pos_h][0][i] << "\t\t\t" <<endl;
             }
         }
 
@@ -787,13 +916,26 @@ public:
 
             if (u == 'Y' || u == 'y') // Allow user input 'Y' or 'y'
             {
-                cout << setw(20) << left << "Student Name" << setw(10) << right << "StudentID" << setw(12) << right << "Tutorial Group\n"; // Print table headers
-                cout << setw(20) << left << "Zhan zhixiang" << setw(10) << right << "23081406A" << setw(12) << right << "B04\n"; // Print each row of the table
-                cout << setw(20) << left << "HUANG Kaicong" << setw(10) << right << "21059188A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "LO Ho Nam" << setw(10) << right << "23004216A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "Yip Chin Tung" << setw(10) << right << "22063753A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "TONG Wai Fan" << setw(10) << right << "23172840A" << setw(12) << right << "B04\n";
-                cout << setw(20) << left << "Wong Tsz Tung" << setw(10) << right << "22002723A" << setw(12) << right << "B04\n";
+                for (int row = 1; row <= 100; row++) { cout << "="; }
+                cout << endl;//Line
+                cout << setw(20) << left << "Student Name" << setw(10) << right << "StudentID" << setw(15) << right << "    Tutorial Group\n"; // Print table headers
+                for (int row = 1; row <= 100; row++) { cout << "="; }
+                cout << endl;//Line
+                cout << setw(20) << left << "Zhan zhixiang" << setw(10) << right << "23081406A" << setw(13) << right << "B04\n"; // Print each row of the table
+                cout << setw(20) << left << "HUANG Kaicong" << setw(10) << right << "21059188A" << setw(13) << right << "B04\n";
+                cout << setw(20) << left << "LO Ho Nam" << setw(10) << right << "23004216A" << setw(13) << right << "B04\n";
+                cout << setw(20) << left << "Yip Chin Tung" << setw(10) << right << "22063753A" << setw(13) << right << "B04\n";
+                cout << setw(20) << left << "TONG Wai Fan" << setw(10) << right << "23172840A" << setw(13) << right << "B04\n";
+                cout << setw(20) << left << "Wong Tsz Tung" << setw(10) << right << "22002723A" << setw(13) << right << "B04\n";
+                for (int row = 1; row <= 100; row++) { cout << "="; }
+                cout << endl;//Line
+                cout << "-------" << "\t" << "|" << "\t" << "     " << "\t" << "     " << "\t" << "|" << endl;
+                cout << "   |   " << "\t" << "|" << "\t" << "/---\\" << "\t" << "|---\\" << "\t" << "|  /" << endl;
+                cout << "   |   " << "\t" << "|___" << "\t" << "|   |" << "\t" << "|   |" << "\t" << "|/" << endl;
+                cout << "   |   " << "\t" << "|   |" << "\t" << "|   |" << "\t" << "|   |" << "\t" << "|\\" << endl;
+                cout << "   |   " << "\t" << "|   |" << "\t" << "\\___/\\" << "\t" << "|   |" << "\t" << "|  \\" << endl;
+                for (int row = 1; row <= 100; row++) { cout << "="; }
+                cout << endl;//Line
                 valid = true;  // Set valid to true to exit the loop
             }
             else if (u == 'N' || u == 'n') // Call the Menu() function to return to the main menu
@@ -818,24 +960,36 @@ public:
 
     void Menu()
     {
-        cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents.The detailed information is as fellow. Notice:You should initialize the starting data first. \n";
-        cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n [5] Show Transaction History \n [6] Credits and Exit \n* *************** \nOption(1 - 6) :";
-        int b;
-        cin >> b;
-        switch (b) {
-        case 1:load(); break;
-        case 2: record(); break;
-        case 3:edit_costomer(); break;
-        case 4: custome_log();
+        
+      
+        char opt;
+        int type[20]{ 1,2,3,4,5,6 };//delete the value to close the option if it has bugs
+
+        cout << "\n*****************\n" << "Welcome Message designed by your group\n" << "***Main Menu***" << endl;
+
+        cout << "[" << type[0] << "]" << "Load Starting Data\n" << "[" << type[1] << "]" << "Show Records\n" //show option 
+            << "[" << type[2] << "]" << "Edit Customers\n" << "[" << type[3] << "]" << "Enter Customer View\n"
+            << "[" << type[4] << "]" << "Show Transaction History\n" << "[" << type[5] << "]" << "Credits and Exit\n" << "*****************" << endl;
+        cout << "Option(1-6): " << endl;//show total of options
+        cin >> opt;
+       
+        
+        switch (opt) {
+        case '1':load(); break;
+        case '2': record(); break;
+        case '3':edit_costomer(); break;
+        case '4': custome_log();
             custome_view(); break;
-        case 5:history(); break;
-        case 6:edit(); break;
-        default:break;
+        case '5':history(); break;
+        case '6':edit(); break;
+        default:
+            cout << "No option " << opt << endl;//checking
+            break;
         }
     }
 private:
     char giftid[15][4];
-    char des[15][101];
+    char des[15][150];
     int require[15];
     char  customer_ID[100][51];
     char Rank[11];
@@ -864,8 +1018,34 @@ int main()
 
     redemption sys;
     sys.setsize(150, 150);
-    cout << "It is our priviledge to invite you to engage in the Gigt Redemption activity!! For the sake of prompting comsumption. \nOur enterprise launched this redemption system. Each of your purchase will take account to CCpoints, which could be used to redeem delicated presents . The detailed information is as fellow. Notice:You should initialize the starting data first. \n";
-    cout << "*** Main Menu *** \n [1] Load Starting Data\n [2] Show Records\n [3] Edit Customers\n [4] Enter Customer View\n[5] Show Transaction History \n[6] Credits and Exit \n***************** \nOption(1 - 6) :";
+    //Rectangle
+    for (int row = 1; row <= 10; row++)
+    {
+        for (int col = 1; col <= 73; col++)
+        {
+            if (col > 1 && col < 73 && row == 1 || row == 10 && col>1 && col < 73) { cout << "-"; }
+            else { cout << ""; }
+            if (col == 1 && row == 1 || col == 73 && row == 10) { cout << "/"; }
+            else { cout << ""; }
+
+            if (col == 1 && row == 10 || row == 1 && col == 73) { cout << "\\"; }
+            if (row == 5 && col == 48) {
+                cout << "It is our privilege to invite you to engage in \n\tthe Gigt Redemption activity!!\n"
+                    << "\tFor the sake of prompting consumption. \n" << "\tOur enterprise launched this redemption system.\n" << "\tEach of your purchase will take account to CCpoints, \n\twhich could be used to redeem delicated presents.\n"
+                    << "\tThe detailed information is as fellow." << "\n\tNotice:You should initialize the starting data first.\n"; col += 4;
+            }
+            if (row > 1 && row <= 9 && col == 1) { cout << "|" << "\t"; }
+            if (col == 73 && row > 1 && row <= 9) { cout << "                                                                |"; }
+
+        }cout << endl;
+    }//Rectangle
+
+    cout << "*****************\n" << "Welcome Message designed by your group\n" << "***Main Menu***" << endl;
+
+    cout << "[1]" << "Load Starting Data\n" << "[2]" << "Show Records\n" //show option 
+        << "[3]" << "Edit Customers\n" << "[4]" << "Enter Customer View\n"
+        << "[5]" << "Show Transaction History\n" << "[6]" << "Credits and Exit\n" << "*****************" << endl;
+    cout << "Option(1-6): " << endl;//show total of options
     int c;//showMainMenu();
     cin >> c;
     while (true) {
@@ -875,6 +1055,7 @@ int main()
             cin >> c;
         }
     }//check untill user cin 1 to load the data
+    
 
     sys.load();
     system("pause");
