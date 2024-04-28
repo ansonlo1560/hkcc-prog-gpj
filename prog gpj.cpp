@@ -195,7 +195,7 @@ public:
                 }break;
             }
             else if (y >= 0) { cout << "   " << "|" << "  " << "|" << endl; }
-            else{ cout << " "; }
+            else { cout << " "; }
         }cout << endl;
         for (int row = 1; row <= 10; row++)
         {
@@ -216,17 +216,17 @@ public:
         cout << endl;
         cout << "Giftid" << "\t";
         cout << "Description";
-        
+
         for (int i = 1; i <= 30; i++) { cout << ""; }
-        cout <<"\t\t\t\t"<<"|"<<"Price"<<"| "<<"\t"<< "|" << "CC Requirement" << "| " << endl;
+        cout << "\t\t\t\t" << "|" << "Price" << "| " << "\t" << "|" << "CC Requirement" << "| " << endl;
         for (int row = 1; row <= 100; row++) { cout << "="; }
         cout << endl;//Line
-        
+
         for (int j = 0; j < 15; j++) {
-            cout << left<<giftid[j] << "\t"<< des[j];
+            cout << left << giftid[j] << "\t" << des[j];
             for (int i = 1; i <= 40 - strlen(des[j]); i++) { cout << " "; }
-            
-            cout << "|$" << price[j] <<"|" <<"\t\t" << "|" << require[j] << "|" << endl;
+
+            cout << "|$" << price[j] << "|" << "\t\t" << "|" << require[j] << "|" << endl;
             for (int row = 1; row <= 100; row++) { cout << "-"; }
             cout << endl;
         }
@@ -272,7 +272,7 @@ public:
                     cout << endl;//Line
                     cout << "Plase enter your joinning day(DD): ";
                     cin >> k;
-                   
+
                     if (!cin.fail() && k > 0 && k <= 30) {
                         break;
                     }
@@ -299,7 +299,7 @@ public:
                     }
                 } while (1);
                 do {
-                
+
                     cout << "Plase enter your joinning year(YYYY): ";
                     cin >> c;
                     for (int row = 1; row <= 100; row++) { cout << "="; }
@@ -497,15 +497,15 @@ public:
             }
 
             for (int j = 0; j < 3; j++) {
-                cout << "|"<<giftid[d[j]]<<"|" << "\t\t";
+                cout << "|" << giftid[d[j]] << "|" << "\t\t";
                 for (int i = 0; i < 20; i++) {
-                    cout <<des[j][i];
-                 
+                    cout << des[j][i];
+
                 }
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t\t" << "|$"<<price[d[j]]<<"|" << "\t\t" << "|"<<require[d[j]] * b << extra<<"|";
+                cout << "\t\t" << "|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
                 cout << endl;
             }
             cout << endl;
@@ -531,7 +531,7 @@ public:
             }
 
             for (int j = 3; j < 8; j++) {
-                cout << "|"<<giftid[d[j]]<<"|" << "\t\t";
+                cout << "|" << giftid[d[j]] << "|" << "\t\t";
                 for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
@@ -569,7 +569,7 @@ public:
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t\t" <<"|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
+                cout << "\t\t" << "|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
                 cout << endl;
             }
             cout << endl;
@@ -598,14 +598,14 @@ public:
                 for (int i = 0; i < 20; i++) {
                     cout << des[j][i];
                 }
-            
-                
+
+
                 if (require[d[j]] * b > CC[pos]) {
                     extra = '*';
                 }
-                cout << "\t\t" <<"|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
+                cout << "\t\t" << "|$" << price[d[j]] << "|" << "\t\t" << "|" << require[d[j]] * b << extra << "|";
                 cout << endl;
-                
+
             }
             for (int row = 1; row <= 100; row++) { cout << "="; }
             cout << endl;//Line
@@ -689,17 +689,17 @@ public:
             His_Rem_E[pos][0][His_Rem[pos][0][0]] = extra;
             use_CCpoint = k;
         }
-        cout << "This is " << extra<<"\n";
+        cout << "This is " << extra << "\n";
 
         if (k >= require[pos_g]) {
             use_CCpoint = require[pos_g];
         }
         for (int row = 1; row <= 100; row++) { cout << "!"; }
         cout << endl;//Line
-        cout << "Are you confirm that using " << k << "CC point and   " << extra << " extra money for this gift?\n "<<endl;
+        cout << "Are you confirm that using " << k << "CC point and   " << extra << " extra money for this gift?\n " << endl;
         for (int row = 1; row <= 100; row++) { cout << "!"; }
         cout << endl;//Line
-        cout<<"\nNotice: input \"Y\" or \"N\"\n"<<endl;
+        cout << "\nNotice: input \"Y\" or \"N\"\n" << endl;
         for (int row = 1; row <= 100; row++) { cout << "!"; }
         cout << endl;//Line
         //Downarrow
@@ -732,12 +732,12 @@ public:
                 }
             }cout << endl;
         }//Downarrow End
-        
+
         char u;
         bool valid = false;
 
         do {
-            cout << "\nPlease enter 'Y' or 'N': "<<endl;
+            cout << "\nPlease enter 'Y' or 'N': " << endl;
             cin >> u;
 
             if (u == 'Y' || u == 'N') {
@@ -869,7 +869,7 @@ public:
         for (int row = 1; row <= 100; row++) { cout << "="; }
         cout << endl;//Line
         cout << "Redeem Gifts:\n";
-        cout << "Gift ID" << "\t" << "Description" << "\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
+        cout << "Gift ID" << "\t" << "Description" << "                    "<<"\t" << "Original" << "\t" << "Final" << "\t" << "Extra Money\n";
         for (int row = 1; row <= 100; row++) { cout << "="; }
         cout << endl;//Line
 
@@ -882,18 +882,18 @@ public:
             // Display the redeem gifts transactions
             for (int i = 1; i <= His_Rem_O[pos_h][0][0]; i++) {
                 for (int j = 0; j <= 2; j++) {
-                    cout << giftid[His_Rem[pos_h][0][i]][j] ;
+                    cout << giftid[His_Rem[pos_h][0][i]][j];
                 }
                 cout << "\t";
-                for (int j = 1; j <= 30; j++) {
-                    cout << des[His_Rem[pos_h][0][i]][j] ;
+                for (int j = 0; j <= 30; j++) {
+                    cout << des[His_Rem[pos_h][0][i]][j];
                 }
                 cout << "\t";
                 cout << His_Rem_O[pos_h][0][i] << "\t";
                 cout << His_Rem_F[pos_h][0][i] << "\t";
                 cout << His_Rem_E[pos_h][0][i] << endl;//His_Rem_E[pos_g]
 
- }
+            }
 
             cout << "--------------------------------------\n\n"; //visual separator
         }
@@ -913,7 +913,7 @@ public:
             for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++) {
                 cout << His_Mo_T[pos_h][0][i] << "\t";//A0X
                 cout << His_Mo_O[pos_h][0][i] << "\t";// Original
-                cout << His_Mo_F[pos_h][0][i] << "\t\t\t" <<endl;// Final
+                cout << His_Mo_F[pos_h][0][i] << "\t\t\t" << endl;// Final
             }
         }
 
@@ -956,6 +956,7 @@ public:
             }
             else if (u == 'N' || u == 'n') // Call the Menu() function to return to the main menu
             {
+                Menu();
                 valid = true;  // Set valid to true to exit the loop
             }
             else // Handle invalid input
@@ -976,8 +977,8 @@ public:
 
     void Menu()
     {
-        
-      
+
+
         char opt;
         int type[20]{ 1,2,3,4,5,6 };//delete the value to close the option if it has bugs
 
@@ -988,8 +989,8 @@ public:
             << "[" << type[4] << "]" << "Show Transaction History\n" << "[" << type[5] << "]" << "Credits and Exit\n" << "*****************" << endl;
         cout << "Option(1-6): " << endl;//show total of options
         cin >> opt;
-       
-        
+
+
         switch (opt) {
         case '1':load(); break;
         case '2': record(); break;
@@ -1071,7 +1072,7 @@ int main()
             cin >> c;
         }
     }//check untill user cin 1 to load the data
-    
+
 
     sys.load();
     system("pause");
@@ -1132,4 +1133,3 @@ int main()
 //   4. 娴ｈ法鏁ら柨娆掝嚖閸掓銆冪粣妤€褰涢弻銉ф箙闁挎瑨顕?
 //   5. 鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘虫煀妞ゅ厜鈧繀浜掗崚娑樼紦閺傛壆娈戞禒锝囩垳閺傚洣娆㈤敍灞惧灗鏉烆剙鍩岄垾婊堛€嶉惄顔光偓?閳ユ粍鍧婇崝鐘靛箛閺堝銆嶉垾婵呬簰鐏忓棛骞囬張澶夊敩閻焦鏋冩禒鑸靛潑閸旂姴鍩屾い鍦窗
 //   6. 鐏忓棙娼甸敍宀冨鐟曚礁鍟€濞嗏剝澧﹀鈧銈夈€嶉惄顕嗙礉鐠囩柉娴嗛崚鎵斥偓婊勬瀮娴犲灈鈧?閳ユ粍澧﹀鈧垾?閳ユ粓銆嶉惄顔光偓婵嗚嫙闁瀚?.sln 閺傚洣娆?
-
