@@ -318,12 +318,24 @@ public:
                 if (time(0) - ((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) >= 365 * 24 * 60 * 60) {
                     Rank[a - 1] = 'G';
                 }
+                else if (time(0) - ((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) < 365 * 24 * 60 * 60 && ((a - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60 - time(0)) >= 6 * 30 * 24 * 60 * 60) {
+                    Rank[a - 1] = 'S';
+                }
+                else {
+                    Rank[a - 1] = 'B';
+                }
+
+                /**
+                if (time(0) - ((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) >= 365 * 24 * 60 * 60) {
+                    Rank[a - 1] = 'G';
+                }
                 if (time(0) - ((k - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60) < 365 * 24 * 60 * 60 && ((a - 1) * 24 * 60 * 60 + (b - 1) * 30 * 24 * 60 * 60 + (c - 1970) * 365 * 24 * 60 * 60 - time(0)) >= 6 * 30 * 24 * 60 * 60) {
                     Rank[a - 1] = 'S';
                 }
                 else {
                     Rank[a - 1] = 'B';
                 }
+                */
 
                 cout << "Please enter points balance value:\n";
                 int v;
@@ -625,9 +637,9 @@ public:
         int same = 0;
         char user[3];
         int pos_g = 0;
-        cin >> user;
         for (int i = 1; i <= 3; i++)//3 attempt times
         {
+            cin >> user;
             for (int i = 0; i < 15; i++)
             {
                 for (int j = 0; j < 3; j++) {
@@ -651,13 +663,13 @@ public:
             }
         }//check which gift user want to choose
         His_Rem[pos][0][0] = His_Rem[pos][0][0] + 1;
-        His_Rem[pos][0][His_Rem[pos][0][0]] = pos_g;//record into history
+        His_Rem[pos][0][His_Rem[pos][0][0]] = pos_g;//record into history 禮物位置
 
 
         cout << "Please input the amount of CC points used for redemption: \n";
         for (int row = 1; row <= 100; row++) { cout << "="; }
         cout << endl;//Line
-        int k;
+        int k; //PLEASE NAME VARIABLE WITH MEANINGFUL NAME!
 
         for (int i = 1; i <= 3; i++) {
             cin >> k;
@@ -669,9 +681,12 @@ public:
         }
         int  use_CCpoint = 0;
         if (k < require[pos_g]) {
-            extra = price[pos_g] - round(require[pos_g] * b) * 0.2;
-            His_Rem_E[pos_g][0][0] = His_Rem_E[pos_g][0][0] + 1;
-            His_Rem_E[pos_g][0][His_Rem[pos_g][0][0]] = extra;
+            int same = 0;
+            //extra = ((19000 * 1) - (15000)) = 4000 CC pt = $800
+            //extra = (CC_require * discount - paid_CC_point) * 0.2
+            extra = round((require[pos_g] * b - k) * 0.2);
+            His_Rem_E[pos][0][0] = His_Rem_E[pos][0][0] + 1; //pos ... pos_g
+            His_Rem_E[pos][0][His_Rem[pos][0][0]] = extra;
             use_CCpoint = k;
         }
         cout << "This is " << extra<<"\n";
@@ -876,8 +891,9 @@ public:
                 cout << "\t";
                 cout << His_Rem_O[pos_h][0][i] << "\t";
                 cout << His_Rem_F[pos_h][0][i] << "\t";
-                cout << His_Rem_E[pos_h][0][i] << endl;
-            }
+                cout << His_Rem_E[pos_h][0][i] << endl;//His_Rem_E[pos_g]
+
+ }
 
             cout << "--------------------------------------\n\n"; //visual separator
         }
@@ -895,9 +911,9 @@ public:
         else {
             // Display the modify CC points balance transactions
             for (int i = 1; i <= His_Mo_T[pos_h][0][0]; i++) {
-                cout << His_Mo_T[pos_h][0][i] << "\t";
-                cout << His_Mo_O[pos_h][0][i] << "\t";
-                cout << His_Mo_F[pos_h][0][i] << "\t\t\t" <<endl;
+                cout << His_Mo_T[pos_h][0][i] << "\t";//A0X
+                cout << His_Mo_O[pos_h][0][i] << "\t";// Original
+                cout << His_Mo_F[pos_h][0][i] << "\t\t\t" <<endl;// Final
             }
         }
 
@@ -995,13 +1011,13 @@ private:
     char Rank[11];
     int  CC[10];
     int price[15];
-    int pos = 0;
+    int pos = 0; //紀錄一下Customer是誰
     int pos_h = 0;
     int His_E_S[100][1][100] = { 0 };//3D array His_X_X[pos_h][0][0] is times of history His_X_X[pos_h][0][His_X_X[pos_h][0][0]] is specific record
     int His_E_M[100][1][100] = { 0 };
     int His_E_O[100][1][100] = { 0 };//O:original  and   F:final
     int His_Rem[100][1][100] = { 0 };
-    int His_Rem_E[100][1][100] = { 0 };
+    int His_Rem_E[100][1][100] = { 0 };//[行][列][高 每一次紀錄是啥] => [pos][0][0] 是有多少紀錄 || [pos][0][2] = 該用戶第二次兌換了的禮物是... 
     int His_Rem_O[100][1][100] = { 0 };
     int His_Rem_F[100][1][100] = { 0 };
     int His_Mo_T[100][1][100] = { 0 };
